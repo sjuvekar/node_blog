@@ -6,7 +6,7 @@
 	<link rel="shortcut icon" href="public/images/sudeep.jpg">
 </head>
 <body>
-	<div class="sudeep-blog-login"><a href="/blog/{{sudeep_blog_login}}">{{sudeep_blog_login}}</a></div>
+	<div class="sudeep-blog-login"><a href="/login">login</a></div>
 	<!-- Gravatar image -->
 	<img src="http://www.gravatar.com/avatar/1cd45d5f04e20582a5a0892dc7b8b227?s=100" class="sudeep-blog-photo" />
 	<!-- end Gravatar image -->
@@ -16,15 +16,15 @@
 		<a href="/blog/newpost">Create a new post&gt;&gt;</a> &nbsp; |
 		&nbsp; <a href="/blog/map">Blog Map&gt;&gt;</a>
 	</div>
- 	  {% for blog_entry in blog_entries %}
-	     <div class="sudeep-blog-display">
-		<div class="sudeep-blog-display-subject">
-			<h2><a href="/blog/{{blog_entry.key().id()}}">{{blog_entry.sudeep_blog_db_subject}}</a></h2>
-			<span class="sudeep-blog-display-date">{{blog_entry.sudeep_blog_created.date()}}</span>
+ 	  <% for(var i = 0; i < blog_entries.length; i++) { %>
+	  <div class="sudeep-blog-display">
+		 <div class="sudeep-blog-display-subject">
+			<h2><a href="/blog/<%= blog_entries[i].id %>"><%= blog_entries[i].subject %></a></h2>
+			<span class="sudeep-blog-display-date"><%= blog_entries[i].created_at %></span>
 			<!-- Tweet button -->
 			<span class="sudeep-blog-display-date">
-				<a href="https://twitter.com/share" class="twitter-share-button" data-text= "{{blog_entry.sudeep_blog_db_subject}}" 
-				data-url="http://www.sjuvekar.appspot.com/blog/{{blog_entry.key().id()}}" data-counturl="http://www.sjuvekar.appspot.com/blog/" 
+				<a href="https://twitter.com/share" class="twitter-share-button" data-text= "<%= blog_entries[i].subject %>" 
+				data-url="http://www.sjuvekar.appspot.com/blog/<%= blog_entries[i].id %>" data-counturl="http://www.sjuvekar.appspot.com/blog/" 
 				data-via="pseud_deep" data-lang="en">Tweet</a>
 				<script>
 					!function(d,s,id) {
@@ -41,7 +41,7 @@
 			<!-- end Twitter button -->
 			<!-- tumblr button -->
 			<span class="sudeep-blog-display-date">
-				<a id="sudeep-blog-tumblr" href="http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sjuvekar.appspot.com%2Fblog%2F%0A{{blog_entry.key().id()}}&name={{blog_entry.sudeep_blog_db_subject}}" title="Share on Tumblr">
+				<a id="sudeep-blog-tumblr" href="http://www.tumblr.com/share/link?url=http%3A%2F%2Fwww.sjuvekar.appspot.com%2Fblog%2F%0A <%= blog_entries[i].id %>&name=<%= blog_entries[i].subject %>" title="Share on Tumblr">
 					Share on Tumblr
 				</a>
 			</span>
@@ -49,15 +49,17 @@
 		</div>
 		<hr>
 		<div class="sudeep-blog-display-body">
-			<pre>{{blog_entry.sudeep_blog_db_body}}</pre>
+			<pre><%= blog_entries[i].body %></pre>
 		</div>
-	     </div>
-	  {% endfor %}
+	    </div>
+	  <% } %>
 	<div style="text-align:center; margin-bottom: 100px;">
-	 Page: 
+	 Page:
+	 <!-- 
 	 {% for page in pages_to_link %}
 		<span class="sudeep-blog-anchor"><a href="/blog?page={{page}}">{{page}}</a></span> | 
 	 {% endfor %}
+	 -->
 	</div>
 	<!-- tumbler script -->
 	<script src="http://platform.tumblr.com/v1/share.js"></script>
