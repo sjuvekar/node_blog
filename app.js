@@ -31,8 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 connection.mongoInit();
 
 app.get('/', function (req, res) { routes.render("index", req, res) });
-app.get('/:id?', function(req, res) { routers.render("index", req, res)})
-app.use('/login', function(req, res) { routes.login(req, res)});
+app.get('/:id(\\d+)/', function(req, res) { routes.render("index", req, res)});
+app.get('/login', function(req, res) { routes.login(req, res)});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
