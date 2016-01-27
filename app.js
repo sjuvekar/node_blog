@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/');
+var connection = require('./db/connection')
 
 var app = express();
 
@@ -20,8 +21,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({ secret: 'JenkinsUbuntuGerrit' }));
+app.use(session({ secret: 'JenkinsUbuntuGerrit',
+                  saveUninitialized: true,
+                  resave: true}));
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Initialize mongoDB
+connection.mongoInit();
 
 app.get('/', function (req, res) { routes.render("index", req, res) });
 app.get('/:id?', function(req, res) { routers.render("index", req, res)})
