@@ -9,7 +9,13 @@ var PostSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	key: {
+		type: Number,
+	},
+	coords: {
+		type: String,
+	},
 	created_at: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose,model("Post", PostSchema);
+module.exports = mongoose.model("Post", PostSchema);
