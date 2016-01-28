@@ -31,10 +31,10 @@
 		<% for(var i = 0; i < blog_entries.length; i++) { %>
 		<div class="panel panel-success">
 			<div class="panel-heading">
-				<span class="panel-title" style="font-size: x-large"; }>
+				<div class="panel-title" style="font-size: x-large;">
 					<a href="/blog/<%= blog_entries[i].id %>"><%= blog_entries[i].subject %></a>
-				</span>
-				<span class="pull-right"><%= blog_entries[i].created_at.toDateString() %></span>
+				</div>
+				<small><%= blog_entries[i].created_at.toDateString() %></small>
 			</div>
 
 			<div class="panel-body" style="font-size: 120%;">
