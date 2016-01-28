@@ -7,6 +7,7 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<link rel="stylesheet" href="/stylesheets/sudeep_blog_display.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -30,12 +31,12 @@
 	<div class="container-fluid">
 		<div class="panel panel-success">
 			<div class="panel-heading">
-				<span class="panel-title" style="font-size: x-large;">
+				<span class="panel-title">
 					<%= blog_entry.subject %>
 				</span>
 			</div>
 			
-			<div class="panel-body" style="width=100%; white-space: pre-line; word-wrap: break-word; font-size: 120%">
+			<div class="panel-body">
 				<%- blog_entry.body %>
 			</div>
 			
