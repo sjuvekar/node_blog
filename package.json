@@ -13,6 +13,7 @@
     "express-session": "~1.13.0",
     "flash": "~1.1.0",
     "serve-favicon": "~2.3.0",
+    "morgan": "~1.6.1",
     "mongodb": "~2.0.33",
     "mongoose": "~4.3.7",
     "ejs": "~2.4.1",
