@@ -2,42 +2,62 @@
 <html>
 <head>
 	<title> Sudeep Juvekar's Blog</title>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/sudeep_blog_display.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
 </head>
 <body>
-	<div class="sudeep-blog-login"><a href="/login">login</a></div>
-	<!-- Gravatar image -->
-	<img src="http://www.gravatar.com/avatar/1cd45d5f04e20582a5a0892dc7b8b227?s=100" class="sudeep-blog-photo" />
-	<!-- end Gravatar image -->
-	 <h1>Sudeep's Blog</h1>
-	 <h3>Disorganized Thoughts in Organized Manner</h3>
-	 <div class="sudeep-blog-anchor">
-		<a href="/newpost">Create a new post&gt;&gt;</a> &nbsp; |
-		&nbsp; <a href="/map">Blog Map&gt;&gt;</a>
-	</div>
- 	  <% for(var i = 0; i < blog_entries.length; i++) { %>
-	  <div class="sudeep-blog-display">
-		 <div class="sudeep-blog-display-subject">
-			<h2><a href="/blog/<%= blog_entries[i].id %>"><%= blog_entries[i].subject %></a></h2>
-			<span class="sudeep-blog-display-date"><%= blog_entries[i].created_at %></span>
-			<!-- Tweet button -->
-			
-			<!-- end Twitter button -->
-			<!-- tumblr button -->
-			
-			<!-- end of tumblr button -->
+	<!-- Jumbotron title -->
+	<div class="container-fluid">
+		<div class="jumbotron">
+			<div class="row">
+				<div class="col-xs-6 col-md-4">
+					<!-- Gravatar image -->
+					<img src="http://www.gravatar.com/avatar/1cd45d5f04e20582a5a0892dc7b8b227?s=156" />
+					<!-- end Gravatar image -->
+				</div>
+
+				<h1>Sudeep's Blog</h1>
+				<h3>Disorganized Thoughts in Organized Manner</h3>	
+			</div>
 		</div>
-		<hr>
-		<div class="sudeep-blog-display-body">
-			<pre><%- blog_entries[i].body %></pre>
-		</div>
-	    </div>
-	  <% } %>
-	<div style="text-align:center; margin-bottom: 100px;">
-	 Page:
-	 <% for(var i = 1; i <= num_pages; i++) { %>
-		<span class="sudeep-blog-anchor"><a href="/<%= i %>"><%= i %></a></span> | 
-	 <% } %>
 	</div>
+	
+	<!-- blog contents using panels -->
+	<div class="container-fluid">
+		<% for(var i = 0; i < blog_entries.length; i++) { %>
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<span class="panel-title" style="font-size: x-large"; }>
+					<a href="/blog/<%= blog_entries[i].id %>"><%= blog_entries[i].subject %></a>
+				</span>
+				<span class="pull-right"><%= blog_entries[i].created_at.toDateString() %></span>
+			</div>
+
+			<div class="panel-body" style="white-space: pre-line;font-size: 120%">
+				<%- blog_entries[i].body %>
+			</div>
+			
+		</div>
+		<% } %>
+	</div>
+
+	<!-- Pagination -->
+	<div class="container-fluid" style="text-align: center">
+		<nav>
+		<ul class="pagination pagination-lg">
+				<% for(var i = 1; i <= num_pages; i++) { %>
+				<li><a href="/<%= i %>"><%= i %></a></li>
+				<% } %>
+			</ul>
+		</nav>
+	</div>
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>

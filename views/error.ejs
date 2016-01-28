@@ -1,17 +1,43 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/sudeep_blog_display.css">
-	<link rel="shortcut icon" href="public/images/sudeep.jpg">
+	<title> Sudeep Juvekar's Blog</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
 </head>
 <body>
-	<div class="sudeep-blog-login"><a href="/login">login</a></div>
-	<!-- Gravatar image -->
-	<img src="http://www.gravatar.com/avatar/1cd45d5f04e20582a5a0892dc7b8b227?s=100" class="sudeep-blog-photo" />
-	<!-- end Gravatar image -->
-	 <h1>Sudeep's Blog</h1>
-	 <h3>Disorganized Thoughts in Organized Manner</h3>
-	 <b>Error: </b><%= error %><br>
-	 <b>Msg: </b><%= message %><br>
-</body>
-</html>
+	<!-- Jumbotron title -->
+	<div class="container-fluid">
+		<div class="jumbotron">
+			<div class="row">
+	  			<div class="col-xs-6 col-md-4">
+	  				<!-- Gravatar image -->
+					<img src="http://www.gravatar.com/avatar/1cd45d5f04e20582a5a0892dc7b8b227?s=156" />
+					<!-- end Gravatar image -->
+				</div>
+	  			
+	  			<h1>Sudeep's Blog</h1>
+		 		<h3>Disorganized Thoughts in Organized Manner</h3>	
+		 	</div>
+	 	</div>
+	</div>
+
+	<div class="container-fluid" style="text-align: center">
+	    <div class="row">
+	        <div class="col-md-12">
+	            <div class="error-template">
+	                <h1>
+	                    Oops!</h1>
+	                <h2>
+	                    This page does not exist.</h2>
+	                <div class="error-actions">
+	                    <a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>Back to Home </a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
