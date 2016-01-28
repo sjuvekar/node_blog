@@ -12,9 +12,23 @@ body h3 {
 	color: #787878;
 }
 
+label {
+  display: block;
+  width: 90%;
+  margin: 5px;
+}
+
 .sudeep-blog-photo {
 	float: left;
 	display: inline;
+}
+
+.sudeep-blog-label {
+  display: inline-block;
+  width: 10%;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 10px;
 }
 
 .sudeep-blog-login,
@@ -26,6 +40,25 @@ body h3 {
 
 .sudeep-blog-login a:hover {
 	background: #C0C0C0;
+}
+
+.sudeep-blog-login-input {
+  width: 20%;
+  font-size: 25px;
+  border: 3px solid #cccccc;
+
+}
+
+.sudeep-blog-button {
+  width: 100px;
+  height: 30px;
+  border: 1px solid #006;
+  font-weight: bold;
+}
+
+.sudeep-blog-error {
+  color: #E00000;
+  margin: 5px;
 }
 
 .sudeep-blog-display {

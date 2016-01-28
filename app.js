@@ -7,7 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/');
-var connection = require('./db/connection')
+var connection = require('./db/connection');
+var localAuth = require("./auth/local");
 
 var app = express();
 
@@ -24,7 +25,7 @@ app.use(cookieParser());
 app.use(session({ secret: 'JenkinsUbuntuGerrit',
                   saveUninitialized: true,
                   resave: true}));
-
+app.use(require('flash')());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Initialize mongoDB
@@ -33,7 +34,9 @@ connection.mongoInit();
 app.get('/', function (req, res) { routes.render("index", req, res) });
 app.get('/:id(\\d+)', function(req, res) { routes.render("index", req, res)});
 app.get('/blog/:id', function(req, res) { routes.render_blog("post", req, res)});
-app.get('/login', function(req, res) { routes.login(req, res)});
+app.get('/logout', function(req, res) { routes.signout(req, res); });
+app.get('/login', function(req, res) { routes.login(req, res); });
+app.post('/login', localAuth.local_signin());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/sudeep_blog_display.css">
+</head>
+<body>
+	<form method="post">
+		<h1>Login</h1>
+		<label>
+			<span class="sudeep-blog-label">User Name:</span>
+			<input type="text" name="sudeep_blog_username" class="sudeep-blog-login-input">
+		</label>
+		<label>
+			<span class="sudeep-blog-label">Password:</span>
+			<input type="password" name="sudeep_blog_password" class="sudeep-blog-login-input">
+		</label>
+		<div class="sudeep-blog-error"><%= flash_msg %></div>	
+		<input type="submit" value="submit" class="sudeep-blog-button">		
+	</form>
+	<div class="sudeep-blog-anchor">
+		<a href="/">&lt;&lt;Return to Blog entries</a>
+	</div>
+
+</body>
+</html>

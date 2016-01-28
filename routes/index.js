@@ -37,3 +37,17 @@ module.exports.render_blog = function(dest, req, res) {
 		});
 	}
 };
+
+// Whenever redirected to sign-up page, either by clicking "Sign Up"
+// Or redirected with error-flash
+module.exports.login = function(req, res) {
+	if (req.user) {
+		this.render("/", req, res);
+	}
+	else {
+		res.render("login", {
+			signup_flash_msg: req.flash("signup_error"),
+			flash_msg: req.flash("error")
+		});
+	}
+};

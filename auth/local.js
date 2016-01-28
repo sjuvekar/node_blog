@@ -1,7 +1,7 @@
 var passport = require("passport")
   , authHelper = require("./authHelper")
   , LocalStrategy = require('passport-local').Strategy
-  , User = require("../models/user");
+  , User = require("../db/user");
 
 // Local login strategy
 passport.use(new LocalStrategy({
@@ -44,7 +44,7 @@ module.exports.local_signup = function(request, response) {
 				    if (err) 
 					response.render("signup", {signup_flash_msg: err.message, flash_msg: request.flash("error")});
 				    else
-					response.redirect("/competitions")
+					response.redirect("/")
 				});
 			    }
 			});
@@ -53,8 +53,8 @@ module.exports.local_signup = function(request, response) {
 
 // Export signin function
 module.exports.local_signin = function() {
-    return passport.authenticate("local", { successRedirect: "/competitions",
-					    failureRedirect: "/signup",
+    return passport.authenticate("local", { successRedirect: "/",
+					    failureRedirect: "/login",
 					    badRequestMessage: "Could not log in. Have you signed up?", 
 					    failureFlash: true
 					  });
