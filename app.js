@@ -5,6 +5,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var flash = require('flash');
 
 var routes = require('./routes/');
 var connection = require('./db/connection');
@@ -25,7 +27,9 @@ app.use(cookieParser());
 app.use(session({ secret: 'JenkinsUbuntuGerrit',
                   saveUninitialized: true,
                   resave: true}));
-app.use(require('flash')());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Initialize mongoDB
@@ -35,8 +39,6 @@ app.get('/', function (req, res) { routes.render("index", req, res) });
 app.get('/:id(\\d+)', function(req, res) { routes.render("index", req, res)});
 app.get('/blog/:id', function(req, res) { routes.render_blog("post", req, res)});
 app.get('/logout', function(req, res) { routes.signout(req, res); });
-app.get('/login', function(req, res) { routes.login(req, res); });
-app.post('/login', localAuth.local_signin());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
