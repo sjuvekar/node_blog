@@ -5,8 +5,8 @@ var passport = require("passport")
 // Local login strategy
 passport.use(
 	new LocalStrategy({
-		usernameField: 'email',
-		passwordField: 'passwd'
+		usernameField: 'login_name',
+		passwordField: 'login_password'
 	},
 	function(username, password, done) {
 		User.findOne({name: username}, function(err, user) {
@@ -25,3 +25,13 @@ passport.use(
 		});
 	}
 ));
+
+// Export signin function
+module.exports.local_login = function() {
+    return passport.authenticate("local", {
+		successRedirect: "/",
+		failureRedirect: "/login",
+		badRequestMessage: "Could not log in",
+		failureFlash: true
+    });
+};

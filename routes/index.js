@@ -45,9 +45,12 @@ module.exports.login = function(req, res) {
 		this.render("/", req, res);
 	}
 	else {
-		res.render("login", {
-			signup_flash_msg: req.flash("signup_error"),
-			flash_msg: req.flash("error")
-		});
+		res.render("login", { flash_msg: req.flash("error") });
 	}
+};
+
+// Click "Sign Out"
+module.exports.logout = function(req, res) {
+	req.logout();
+	res.redirect("/");
 };

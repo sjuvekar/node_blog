@@ -11,17 +11,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<form class="form-signin" action="local_signup" method="post">
-        <h2 class="form-signin-heading">Please sign up</h2>
-        <label for="inputEmail" class="sr-only">Login id</label>
-        <input id="inputEmail" name="signup_email" class="form-control" placeholder="login" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="signup_password", class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+	<form class="form-login" action="local_login" method="post">
+		<h2 class="form-login-heading">Please log up</h2>
+		<label for="inputName" class="sr-only">Login id</label>
+		<input id="inputName" name="login_name" class="form-control" placeholder="login" required autofocus>
+		<label for="inputPassword" class="sr-only">Password</label>
+		<input type="password" id="inputPassword" name="login_password", class="form-control" placeholder="Password" required>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
     </form>
 
 	<div style="color: red">
-    	<p class="signup-flash"><%= signup_flash_msg %></p>
+		<p class="signup-flash"><%= flash_msg %></p>
     </div>
 
 

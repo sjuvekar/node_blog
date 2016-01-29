@@ -35,10 +35,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Initialize mongoDB
 connection.mongoInit();
 
+// Passport js sessions
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(id, done) {
+    done(null, id);
+});
+
 app.get('/', function (req, res) { routes.render("index", req, res) });
 app.get('/:id(\\d+)', function(req, res) { routes.render("index", req, res)});
 app.get('/blog/:id', function(req, res) { routes.render_blog("post", req, res)});
-app.get('/logout', function(req, res) { routes.signout(req, res); });
+app.get('/login', function(req, res) { routes.login(req, res); });
+app.get('/logout', function(req, res) { routes.logout(req, res); });
+app.post("/local_login", localAuth.local_login());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
