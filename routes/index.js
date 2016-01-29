@@ -42,7 +42,7 @@ module.exports.render_blog = function(dest, req, res) {
 // Or redirected with error-flash
 module.exports.login = function(req, res) {
 	if (req.user) {
-		this.render("/", req, res);
+		this.render("index", req, res);
 	}
 	else {
 		res.render("login", { flash_msg: req.flash("error") });
