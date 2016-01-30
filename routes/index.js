@@ -1,56 +1,78 @@
 var Post = require('../db/post')
 
-module.exports.render = function(dest, req, res) {
-	// First send number of documents in database
-	Post.count(function(err, count) {
-		if (!err) {
-			// Get current page id from request
-			var my_id = 1;
-			if (req.params.id) {
-				my_id = req.params.id;
-			}
+module.exports = function(app, passport) {
 
-			// Render the page using documents
-			Post.find({}, null, {sort: {created_at: -1}})
-			.skip((my_id-1) * 10)
-			.limit(10)
-			.exec(function(err, result) {
+	var blog_routes = function(req, res) {
+		// First find number of documents in database
+		Post.count(function(err, count) {
+			if (!err) {
+				// Get current page id from request
+				var my_id = 1;
+				if (req.params.id) {
+					my_id = req.params.id;
+				}
+				// Render the page using documents
+				Post.find({}, null, {sort: {created_at: -1}})
+				.skip((my_id-1) * 10)
+				.limit(10)
+				.exec(function(err, result) {
+					if (!err) {
+						res.render("index.ejs", {
+							blog_entries: result,
+							num_pages: Math.ceil(count / 10),
+						});
+					}
+				});
+			}
+		});
+	};
+
+	// normal routes ===============================================================
+	// show the home page and rop posts
+	app.get('/', function(req, res) { blog_routes(req, res); });
+	app.get('/:id(\\d+)', function(req, res) { blog_routes(req, res); });
+
+	// Get an individual post
+	app.get('/blog/:id', function(req, res) {
+		if (req.params.id) {
+			Post.findById(req.params.id, function(err, result) {
 				if (!err) {
-					res.render(dest, {
-						blog_entries: result,
-						num_pages: Math.ceil(count / 10),
+					res.render("post.ejs", {
+						blog_entry: result,
 					});
 				}
 			});
 		}
 	});
+
+	// Logout
+	app.get('/logout', function(req, res) {
+		req.logout();
+		res.redirect('/');
+	});
+
+	// =============================================================================
+	// AUTHENTICATE (FIRST LOGIN) ==================================================
+	// =============================================================================
+
+	// Login get
+	// show the login form
+	app.get('/login', function(req, res) {
+		res.render('login.ejs', { message: req.flash('message') });
+	});
+
+	// Login post
+	app.post('/login', passport.authenticate('local-login', {
+		successRedirect : '/', // redirect to the secure profile section
+		failureRedirect : '/login', // redirect back to the signup page if there is an error
+		failureFlash : true // allow flash messages
+	}));
 };
 
-module.exports.render_blog = function(dest, req, res) {
-  	if (req.params.id) {
-		Post.findById(req.params.id, function(err, result) {
-			if (!err) {
-				res.render(dest, {
-					blog_entry: result,
-				});
-			}
-		});
-	}
-};
+// route middleware to ensure user is logged in
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
 
-// Whenever redirected to sign-up page, either by clicking "Sign Up"
-// Or redirected with error-flash
-module.exports.login = function(req, res) {
-	if (req.user) {
-		this.render("index", req, res);
-	}
-	else {
-		res.render("login", { flash_msg: req.flash("error") });
-	}
-};
-
-// Click "Sign Out"
-module.exports.logout = function(req, res) {
-	req.logout();
-	res.redirect("/");
-};
+    res.redirect('/');
+}

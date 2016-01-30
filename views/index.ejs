@@ -13,7 +13,7 @@
 <body>
 	<!-- Jumbotron title -->
 	<div class="container-fluid">
-		<div class="jumbotron">
+		<div class="jumbotron" style="background: #BCBCBC">
 			<div class="row">
 				<div class="col-xs-6 col-md-4">
 					<!-- Gravatar image -->
@@ -22,11 +22,11 @@
 				</div>
 
 				<h1>Sudeep's Blog</h1>
-				<h3>Disorganized Thoughts in Organized Manner</h3>	
+				<h3>Disorganized Thoughts in Organized Manner</h3>
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- blog contents using panels -->
 	<div class="container-fluid">
 		<% for(var i = 0; i < blog_entries.length; i++) { %>
@@ -41,7 +41,7 @@
 			<div class="panel-body">
 				<%- blog_entries[i].body %>
 			</div>
-			
+
 		</div>
 		<% } %>
 	</div>
@@ -56,7 +56,7 @@
 			</ul>
 		</nav>
 	</div>
-	
+
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

@@ -11,19 +11,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<form class="form-login" action="local_login" method="post">
+	<form class="form-login" action="/login" method="post">
 		<h2 class="form-login-heading">Please log up</h2>
 		<label for="inputName" class="sr-only">Login id</label>
 		<input id="inputName" name="login_name" class="form-control" placeholder="login" required autofocus>
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input type="password" id="inputPassword" name="login_password", class="form-control" placeholder="Password" required>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-    </form>
+	</form>
 
-	<div style="color: red">
-		<p class="signup-flash"><%= flash_msg %></p>
-    </div>
-
+	<% if (message.length > 0) { %>
+		<div style="color: red">
+			<p class="signup-flash"><%= message %></p>
+		</div>
+	<% } %>
 
 	<div class="container-fluid" style="text-align: center">
 		<a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>Back to Home </a>
