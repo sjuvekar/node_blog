@@ -75,8 +75,8 @@ module.exports = function(app, passport) {
 
 	app.post('/new', isLoggedIn, function(req, res) {
 		var new_post = new Post({
-			subject: req.blog_subject,
-			body: req.blog_body,
+			subject: req.body.blog_subject,
+			body: req.body.blog_body,
 			key: Math.floor(Math.random() * 10000),
 			coords: 1});
 
