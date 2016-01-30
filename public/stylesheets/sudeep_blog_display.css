@@ -4,9 +4,9 @@
 }
 
 .panel-body {
-	width: 100%; 
-	white-space: pre-line; 
-	word-wrap: break-word; 
+	width: 100%;
+	white-space: pre-line;
+	word-wrap: break-word;
 	font-size: 120%;
 }
 
@@ -36,6 +36,14 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+/* Editor in new tab */
+#editor {
+	overflow:scroll;
+	min-height:380px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 /* Media queries for small size */
