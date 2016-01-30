@@ -40,7 +40,7 @@ module.exports = function(passport) {
 
         // No User
         if (!user) {
-          return done(null, false, req.flash("message", "Email id not found. Have you signed up?"));
+          return done(null, false, req.flash("message", "Login id not found. Have you signed up?"));
         }
 
         // Match password
