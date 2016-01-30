@@ -67,12 +67,19 @@ module.exports = function(app, passport) {
 		failureRedirect : '/login', // redirect back to the signup page if there is an error
 		failureFlash : true // allow flash messages
 	}));
+
+	// New post ==================================================
+	app.get('/new', isLoggedIn, function(req, res) {
+		res.render("new.ejs")
+	});
+
 };
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
+	if (req.isAuthenticated())
+	return next();
 
-    res.redirect('/');
+	req.flash("message", "You must be logged in");
+	res.render('login.ejs', { message: req.flash('message') });
 }

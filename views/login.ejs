@@ -12,7 +12,7 @@
 </head>
 <body>
 	<form class="form-login" action="/login" method="post">
-		<h2 class="form-login-heading">Please log up</h2>
+		<h2 class="form-login-heading">Please Log In</h2>
 		<label for="inputName" class="sr-only">Login id</label>
 		<input id="inputName" name="login_name" class="form-control" placeholder="login" required autofocus>
 		<label for="inputPassword" class="sr-only">Password</label>
@@ -21,8 +21,8 @@
 	</form>
 
 	<% if (message.length > 0) { %>
-		<div style="color: red">
-			<p class="signup-flash"><%= message %></p>
+		<div class="alert alert-warning" style="text-align: center">
+			<%= message %>
 		</div>
 	<% } %>
 
