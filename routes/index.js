@@ -73,6 +73,24 @@ module.exports = function(app, passport) {
 		res.render("new.ejs")
 	});
 
+	app.post('/new', isLoggedIn, function(req, res) {
+		var new_post = new Post({
+			subject: req.blog_subject,
+			body: req.blog_body,
+			key: Math.floor(Math.random() * 10000),
+			coords: 1});
+
+		new_post.save(function(err, object) {
+			if(err) {
+				console.log(err);
+			}
+			else {
+				console.log("saved successfully: ", object);
+				res.redirect("/");
+			}
+		});
+	});
+
 };
 
 // route middleware to ensure user is logged in
