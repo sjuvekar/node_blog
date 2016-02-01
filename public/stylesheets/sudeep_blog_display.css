@@ -38,6 +38,12 @@
   border-top-right-radius: 0;
 }
 
+/* social buttons */
+/* This gets Facebook to fall into place */
+.social {
+  margin-bottom: 15px;
+}
+
 /* Editor in new tab */
 #editor {
 	overflow:scroll;
