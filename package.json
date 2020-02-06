@@ -13,7 +13,7 @@
     "express-session": "~1.13.0",
     "connect-flash": "~0.1.1",
     "serve-favicon": "~2.3.0",
-    "morgan": "~1.6.1",
+    "morgan": "~1.9.1",
     "mongoose": "~5.8.11",
     "ejs": "~2.4.1",
     "passport": "~0.3.2",
